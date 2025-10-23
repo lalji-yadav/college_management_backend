@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/college-management/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/college-management/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/college-management",
+  "projects": {
+    "college-management": {
+      "type": "application",
+      "root": "apps/college-management",
+      "entryFile": "main",
+      "sourceRoot": "apps/college-management/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/college-management/tsconfig.app.json"
+      }
+    },
+    "student": {
+      "type": "application",
+      "root": "apps/student",
+      "entryFile": "main",
+      "sourceRoot": "apps/student/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/student/tsconfig.app.json"
+      }
+    }
+  }
+}
