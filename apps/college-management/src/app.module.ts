@@ -9,9 +9,14 @@ import { OrdersModule } from './orders/orders.module';
 import { StudentsModule } from './students/students.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ReportsAnalyticsModule } from './reports-analytics/reports-analytics.module';
+import { MongooseModule } from '@nestjs/mongoose';
+
 
 @Module({
-  imports: [AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule, StudentsModule, NotificationsModule, ReportsAnalyticsModule],
+  imports: [AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
+     StudentsModule, NotificationsModule, ReportsAnalyticsModule,
+    MongooseModule.forRoot('mongodb://localhost:27017/coachingManagement')
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

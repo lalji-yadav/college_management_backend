@@ -1,26 +1,50 @@
-import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import * as bcrypt from 'bcryptjs';
+import { Admin } from '@app/common';
+import { CreateAdminDto } from './dto/create-admin.dto';
+import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
-  }
 
-  findAll() {
-    return `This action returns all auth`;
-  }
+    constructor(@InjectModel(Admin.name) private readonly adminModel: Model<Admin>) { }
 
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
+    async signup(createAdminDto: CreateAdminDto) {
+        const { name, email, password } = createAdminDto;
 
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
+        console.log('data----->', createAdminDto)
 
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
-  }
+        const existing = await this.adminModel.findOne({ email });
+        if (existing) throw new ConflictException('Email already exists');
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const admin = new this.adminModel({
+            name,
+            email,
+            password: hashedPassword,
+        });
+
+        return admin.save();
+    }
+
+    async login(loginDto: LoginDto) {
+        const { email, password } = loginDto;
+        const admin = await this.adminModel.findOne({ email });
+        if (!admin) throw new UnauthorizedException('Invalid email or password');
+
+        const isMatch = await bcrypt.compare(password, admin.password);
+        if (!isMatch) throw new UnauthorizedException('Invalid email or password');
+
+        // You can later return JWT here
+        return { message: 'Login successful', admin };
+    }
+
+    async findAll() {
+        return this.adminModel.find();
+    }
+
 }
+
