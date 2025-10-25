@@ -10,10 +10,8 @@
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
-
     "start:dev:college-management": "nest start college-management --watch",
     "start:dev:student": "nest start student --watch",
-
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/college-management/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -29,7 +27,9 @@
     "@nestjs/jwt": "^11.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^11.0.3",
+    "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^10.0.0",
+    "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "class-validator": "^0.14.2",
     "mongoose": "^8.19.2",
@@ -45,6 +45,7 @@
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
+    "@types/passport-jwt": "^4.0.1",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
