@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { LoginDto } from './dto/login.dto';
 
-@Controller('auth')
+@Controller('api/admin')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -21,4 +21,6 @@ export class AuthController {
   getAllAdmins() {
     return this.authService.findAll();
   }
+
+  
 }

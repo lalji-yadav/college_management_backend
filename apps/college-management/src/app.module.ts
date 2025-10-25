@@ -14,9 +14,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
-     StudentsModule, NotificationsModule, ReportsAnalyticsModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/coachingManagement')
-  ],
+     StudentsModule, NotificationsModule, ReportsAnalyticsModule],
   controllers: [AppController],
   providers: [AppService],
 })

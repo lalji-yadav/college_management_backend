@@ -12,7 +12,7 @@ export class AuthService {
     constructor(@InjectModel(Admin.name) private readonly adminModel: Model<Admin>) { }
 
     async signup(createAdminDto: CreateAdminDto) {
-        const { name, email, password } = createAdminDto;
+        const { name, email, password,role } = createAdminDto;
 
         console.log('data----->', createAdminDto)
 
@@ -25,6 +25,7 @@ export class AuthService {
             name,
             email,
             password: hashedPassword,
+            role
         });
 
         return admin.save();
