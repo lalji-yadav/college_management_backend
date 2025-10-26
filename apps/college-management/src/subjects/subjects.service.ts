@@ -1,21 +1,38 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
-import { Subject } from '@app/common';
+import { CourseSchema,Course, Subject } from '@app/common';
 import { CreateSubjectDto, UpdateSubjectDto } from './dto/subject.dto';
 
 @Injectable()
 export class SubjectsService {
   constructor(
     @InjectModel(Subject.name) private subjectModel: Model<Subject>,
+    @InjectModel(Course.name) private courseModel: Model<Course>,
   ) {}
 
-  //  Create Subject
+  // Create Subject safely
   async createSubject(dto: CreateSubjectDto): Promise<Subject> {
+    if (!dto.courseId) {
+      throw new BadRequestException('Course ID is required');
+    }
+
+    if (!Types.ObjectId.isValid(dto.courseId)) {
+      throw new BadRequestException('Invalid Course ID format');
+    }
+
+    const courseExists = await this.courseModel.findById(dto.courseId);
+    if (!courseExists) {
+      throw new NotFoundException('Course not found');
+    }
+
+    // Create and save subject
     const created = new this.subjectModel({
-      ...dto,
+      name: dto.name,
+      description: dto.description,
       courseId: new Types.ObjectId(dto.courseId),
     });
+
     return created.save();
   }
 

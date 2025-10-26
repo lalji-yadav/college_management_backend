@@ -79,7 +79,7 @@ export class SubjectsController {
   //  Helper — Verify Token
   private verifyToken(token: string): any {
     try {
-      return this.jwtService.verify(token, { secret: 'laljiyadav' }); // TODO: move to env
+      return this.jwtService.verify(token); // TODO: move to env { secret: 'laljiyadav' }
     } catch {
       throw new UnauthorizedException('Invalid or expired token');
     }

@@ -1,8 +1,7 @@
 import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
-//
+
 //  Create Subject DTO
-//
 export class CreateSubjectDto {
   @IsString()
   @IsNotEmpty({ message: 'Subject name is required' })
@@ -15,11 +14,11 @@ export class CreateSubjectDto {
   @IsString()
   @IsNotEmpty({ message: 'Course ID is required' })
   courseId: string;
+
 }
 
-//
+
 //  Update Subject DTO
-//
 export class UpdateSubjectDto {
   @IsString()
   @IsOptional()
@@ -37,9 +36,7 @@ export class UpdateSubjectDto {
   isActive?: boolean;
 }
 
-//
 //  Delete Subject DTO
-//
 export class IdDto {
   @IsString()
   @IsNotEmpty({ message: 'ID is required' })

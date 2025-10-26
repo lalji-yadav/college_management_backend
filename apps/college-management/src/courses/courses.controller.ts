@@ -28,7 +28,7 @@ export class CourseController {
   async findAll(@Req() req: any) {
     const token = this.extractToken(req);
     this.verifyToken(token); // just verify, no role check
-    
+
     return this.courseService.getAllCourses();
   }
 
@@ -82,7 +82,7 @@ export class CourseController {
 
       console.log("token------>", token)
 
-      return this.jwtService.verify(token, { secret: 'laljiyadav' });  // store this in env
+      return this.jwtService.verify(token);  // store this in env
     } catch {
       throw new UnauthorizedException('Invalid or expired token');
     }
