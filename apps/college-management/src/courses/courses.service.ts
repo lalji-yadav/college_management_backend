@@ -12,11 +12,24 @@ export class CourseService {
 
   // Create
   async createCourse(dto: CreateCourseDto): Promise<Course> {
-    const course = new this.courseModel(dto);
 
-    console.log('courser data', course)
+    try {
+
+      console.log("dto--->", dto)
+
+      const course = new this.courseModel(dto);
+
+      console.log('courser data', course)
 
     return course.save();
+      
+    } catch (error) {
+
+      console.log('error data--->', error)
+      return error
+      
+    }
+    
   }
 
   // List all

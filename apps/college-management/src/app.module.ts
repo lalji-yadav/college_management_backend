@@ -10,11 +10,12 @@ import { StudentsModule } from './students/students.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { ReportsAnalyticsModule } from './reports-analytics/reports-analytics.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { OfflineCourseModule } from './offline-course/offline-course.module';
 
 
 @Module({
   imports: [AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
-     StudentsModule, NotificationsModule, ReportsAnalyticsModule],
+     StudentsModule, NotificationsModule, ReportsAnalyticsModule, OfflineCourseModule],
   controllers: [AppController],
   providers: [AppService],
 })

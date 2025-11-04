@@ -13,4 +13,5 @@ export * from '../src/schemas/managementSchema/orders.schema';
 
 export * from '../src/schemas/studentSchema/student.schema';
 // export * from './schemas/studentSchema/order.schema.bkp';
+export * from '../src/schemas/managementSchema/offlineCourse.schema'
 

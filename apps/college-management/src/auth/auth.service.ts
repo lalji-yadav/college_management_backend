@@ -76,7 +76,7 @@ export class AuthService {
     const admin = await this.adminModel.findOne({ email });
     if (!admin) throw new UnauthorizedException('Invalid email or password');
 
-    console.log("admin login data-------->", admin)
+    // console.log("admin login data-------->", admin)
 
     const match = await bcrypt.compare(password, admin.password);
     if (!match) throw new UnauthorizedException('Invalid email or password');

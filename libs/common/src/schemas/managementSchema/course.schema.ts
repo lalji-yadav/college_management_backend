@@ -18,7 +18,7 @@ export class Course extends Document {
   @Prop({ required: true })
   durationInDays: number; // e.g. 180
 
-  @Prop({ default: true })
+  @Prop({ required: true })
   isActive: boolean; // true = visible to students
 }
 
