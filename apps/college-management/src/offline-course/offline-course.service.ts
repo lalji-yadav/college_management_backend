@@ -14,8 +14,18 @@ export class OfflineCourseService {
 
   // Create Course
   async createCourse(dto: CreateOfflineCourseDto): Promise<OfflineCourse> {
+    try {
+
     const course = new this.offlineCourseModel(dto);
+
+    console.log('course---', course)
     return course.save();
+      
+    } catch (error) {
+
+      return error
+      
+    }
   }
 
   // Get All

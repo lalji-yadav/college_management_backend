@@ -21,7 +21,8 @@ export class CreateOfflineCourseDto {
 
   @IsOptional()
   @IsBoolean()
-  isActive?: boolean;
+  courseIsActive?: boolean;
 }
 
 export class UpdateOfflineCourseDto extends PartialType(CreateOfflineCourseDto) {}
+

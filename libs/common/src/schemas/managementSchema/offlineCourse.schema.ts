@@ -19,7 +19,7 @@ export class OfflineCourse extends Document {
   courseTotalTest: number; // e.g. total number of tests included
 
   @Prop({ required: true })
-  isActive: boolean; // true = visible to students
+  courseIsActive: boolean; // true = visible to students
 }
 
 export const OfflineCourseSchema = SchemaFactory.createForClass(OfflineCourse);
