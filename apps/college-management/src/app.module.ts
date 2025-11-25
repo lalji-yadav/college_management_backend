@@ -19,6 +19,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,   // .env ko globally enable karta hai
+      envFilePath: '../../.env'
     }),
      AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
      StudentsModule, NotificationsModule, ReportsAnalyticsModule, OfflineCourseModule],

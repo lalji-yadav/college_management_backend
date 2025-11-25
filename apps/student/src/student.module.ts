@@ -13,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [ ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: '../../.env'
     }), ProfileModule, CoursesModule, OrdersModule, ContentsModule, NotificationsModule, StudentAuthModule],
   controllers: [StudentController],
   providers: [StudentService],
