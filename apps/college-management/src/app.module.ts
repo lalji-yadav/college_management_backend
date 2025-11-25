@@ -11,10 +11,13 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { ReportsAnalyticsModule } from './reports-analytics/reports-analytics.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { OfflineCourseModule } from './offline-course/offline-course.module';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  imports: [AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
+  imports: [ConfigModule.forRoot({
+      isGlobal: true,
+    }), AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
      StudentsModule, NotificationsModule, ReportsAnalyticsModule, OfflineCourseModule],
   controllers: [AppController],
   providers: [AppService],

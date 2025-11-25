@@ -7,10 +7,13 @@ import { OrdersModule } from './orders/orders.module';
 import { ContentsModule } from './contents/contents.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { StudentAuthModule } from './student-auth/student-auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  imports: [ProfileModule, CoursesModule, OrdersModule, ContentsModule, NotificationsModule, StudentAuthModule],
+  imports: [ ConfigModule.forRoot({
+      isGlobal: true,
+    }), ProfileModule, CoursesModule, OrdersModule, ContentsModule, NotificationsModule, StudentAuthModule],
   controllers: [StudentController],
   providers: [StudentService],
 })
