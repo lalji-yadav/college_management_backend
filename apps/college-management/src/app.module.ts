@@ -14,10 +14,13 @@ import { OfflineCourseModule } from './offline-course/offline-course.module';
 import { ConfigModule } from '@nestjs/config';
 
 
+
 @Module({
-  imports: [ConfigModule.forRoot({
-      isGlobal: true,
-    }), AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,   // .env ko globally enable karta hai
+    }),
+     AuthModule, CoursesModule, SubjectsModule, ContentsModule, OrdersModule,
      StudentsModule, NotificationsModule, ReportsAnalyticsModule, OfflineCourseModule],
   controllers: [AppController],
   providers: [AppService],
