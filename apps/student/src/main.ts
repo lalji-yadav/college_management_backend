@@ -7,6 +7,6 @@ async function bootstrap() {
   console.log("DEBUG MONGO_URI:", process.env.MONGO_URI);
 
   console.log("student")
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();
